@@ -1,0 +1,10 @@
+config:
+  aws:region: us-west-2
+  free-k8s-cluster:desiredClusterSize: "3"
+  free-k8s-cluster:eksNodeInstanceType: t3.micro
+  free-k8s-cluster:maxClusterSize: "6"
+  free-k8s-cluster:minClusterSize: "3"
+  free-k8s-cluster:vpcNetworkCidr: 10.0.0.0/16
+  pulumi:template: kubernetes-aws-go
+environment:
+  - pulumi_test/dev-env
