@@ -8,7 +8,16 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		// Create an AWS resource (S3 Bucket)
-		bucket, err := s3.NewBucketV2(ctx, "my-bucket", nil)
+		bucket, err := s3.NewBucketV2(ctx, "deathweaselx86-mybucket", nil)
+		if err != nil {
+			return err
+		}
+
+		_, err = s3.NewBucketObject(ctx, "index.html", &s3.BucketObjectArgs{
+			Bucket: bucket.ID(),
+			Source: pulumi.NewFileAsset("./index.html"),
+		})
+
 		if err != nil {
 			return err
 		}
